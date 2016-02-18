@@ -56,8 +56,7 @@ http.createServer(function(req, res) {
   } 
   else if (uri == "/pushtogithub") {
 
-      var url_parts = url.parse(req.url,true);
-      console.log(url_parts.query);
+    var url_parts = url.parse(req.url,true);
 
     console.log("/pushtogithub called");
     
