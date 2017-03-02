@@ -68,7 +68,7 @@ cprequire_test(["inline:com-chilipeppr-widget-template"], function(myWidget) {
 
     // init my widget
     myWidget.init();
-    $('#' + myWidget.id).css('margin', '10px');
+    $('#' + myWidget.id).css('margin', '20px');
     $('title').html(myWidget.name);
 
 } /*end_test*/ );
@@ -287,6 +287,9 @@ cpdefine("inline:com-chilipeppr-widget-template", ["chilipeppr_ready", /* other 
                 this.options.showBody = true;
                 this.saveOptionsLocalStorage();
             }
+            // this will send an artificial event letting other widgets know to resize
+            // themselves since this widget is now taking up more room since it's showing
+            $(window).trigger("resize");
         },
         /**
          * Hide the body of the panel.
@@ -305,6 +308,9 @@ cpdefine("inline:com-chilipeppr-widget-template", ["chilipeppr_ready", /* other 
                 this.options.showBody = false;
                 this.saveOptionsLocalStorage();
             }
+            // this will send an artificial event letting other widgets know to resize
+            // themselves since this widget is now taking up less room since it's hiding
+            $(window).trigger("resize");
         },
         /**
          * This method loads the pubsubviewer widget which attaches to our 
